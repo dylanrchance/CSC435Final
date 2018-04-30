@@ -8,8 +8,7 @@ namespace myNotesAPI.Models
 {
     public class CategoryContext : DbContext
     {
-        public CategoryContext(DbContextOptions<CategoryContext> options)
-                : base(options)
+        public CategoryContext() : base("myNote")
         { }
         public DbSet<Category> Category { get; set; }
     }

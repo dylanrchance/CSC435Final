@@ -5,8 +5,8 @@ using myNotesAPI.Models;
 
 namespace myNotesAPI.Controllers
 {
-    [Route("api/[controller]")]
-    [ApiController]
+    [Route("api/Notes")]
+    //[ApiController]
     public class NotesController : ControllerBase
     {
         private readonly NotesContext _context;
@@ -22,21 +22,30 @@ namespace myNotesAPI.Controllers
             }
         }
 
-        [HttpGet]
-        public ActionResult<List<Notes>> GetAll()
-        {
-            return _context.Notes.ToList();
-        }
+        //[HttpGet]
+        //public ActionResult<List<Notes>> GetAll()
+        //{
+        //    return _context.Notes.ToList();
+        //}
 
-        [HttpGet("{id}", Name = "GetTodo")]
-        public ActionResult<Notes> GetById(int ID)
+        //[HttpGet("{id}", Name = "Notes")]
+        //public ActionResult<Notes> GetById(long ID)
+        //{
+        //    var item = _context.Notes.Find(ID);
+        //    if (item == null)
+        //    {
+        //        return NotFound();
+        //    }
+        //    return item;
+        //}
+
+        [HttpPost]
+        public IActionResult Create(Notes item)
         {
-            var item = _context.Notes.Find(ID);
-            if (item == null)
-            {
-                return NotFound();
-            }
-            return item;
+            _context.Notes.Add(item);
+            _context.SaveChanges();
+
+            return CreatedAtRoute("Notes", new { id = item.ID }, item);
         }
     }
 }

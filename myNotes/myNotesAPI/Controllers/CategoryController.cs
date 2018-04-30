@@ -5,7 +5,7 @@ using myNotesAPI.Models;
 
 namespace myNotesAPI.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/Category")]
     //[ApiController]
     public class CategoryController : ControllerBase
     {
@@ -23,21 +23,21 @@ namespace myNotesAPI.Controllers
         }
 
 
-        [HttpGet]
-        public ActionResult<List<Category>> GetAll()
-        {
-            return _context.Category.ToList();
-        }
+        //[HttpGet]
+        //public ActionResult<List<Category>> GetAll()
+        //{
+        //    return _context.Category.ToList();
+        //}
 
-        [HttpGet("{id}", Name = "Category")]
-        public ActionResult<Category> GetById(long id)
-        {
-            var item = _context.Category.Find(id);
-            if (item == null)
-            {
-                return NotFound();
-            }
-            return item;
-        }
+        //[HttpGet("{id}", Name = "Category")]
+        //public ActionResult<Category> GetById(long id)
+        //{
+        //    var item = _context.Category.Find(id);
+        //    if (item == null)
+        //    {
+        //        return NotFound();
+        //    }
+        //    return item;
+        //}
     }
 }
